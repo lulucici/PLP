@@ -7,6 +7,15 @@
   <link href='src/fonts.css' rel='stylesheet' type='text/css'>
 
   <script src="src/jquery.min.js"></script>
+
+    <script>
+        function thirdPage(language) {
+
+            parent.thirdPage(language);
+        }
+    </script>
+pt>
+
   <script src="src/d3.min.js"></script>
   <script src="src/d3-transform.js"></script>
   <script src="src/extarray.js"></script>
@@ -28,10 +37,11 @@
   }
   @media (min-width: 1024px) {
     .bubbleChart {
-      min-width: 100px;
-      max-width: 900px;
-      height: 650px;
-      margin: 0 auto;
+        min-width: 100px;
+        max-width: 900px;
+        height: 650px;
+        margin: 0 auto;
+    }
   }
   @media (min-width: 1400px) {
   .bubbleChart {
@@ -59,24 +69,20 @@
       position: fixed;
     }
     body {
-  display: block;
-  margin: 0px;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-}
+      display: block;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
 <script src="src/trianglify.min.js"></script>
 <script>
     var pattern = Trianglify({
-        width: window.innerWidth, 
+        width: window.innerWidth,
         height: window.innerHeight
     });
     document.body.appendChild(pattern.canvas())
 </script>
-<div class="bubbleChart"/>
+<div class="bubbleChart"></div>
 </body>
 </html>

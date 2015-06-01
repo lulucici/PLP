@@ -10,8 +10,17 @@ d3.svg.BubbleChart.define("central-click", function (options) {
       var fn = original.apply(this, arguments);
       self.event.on("click", function(node) {
         if (node.selectAll("text.central-click")[0].length === 1) {
-          window.parent.test(9);
-          //window.location="continuous.html"+"#Java";
+          //window.parent.test(9);
+          //  console.log(JSON.stringify(node));
+          //  console.log(node.text());
+            var pureString = node.text().match(/\d*\.\d*%?(.*)/)[1];
+            var language;
+            if (pureString.indexOf('(See more detail)') != -1) {
+                language = pureString.match(/(.*)\(See more detail\)/)[1];
+            } else {
+                language = pureString;
+            }
+            thirdPage(language);
         }
       });
       return fn;
