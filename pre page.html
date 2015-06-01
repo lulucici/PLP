@@ -36,6 +36,7 @@
             var distinct = document.getElementById('distinct').childNodes[0].childNodes[1];
             console.log(distinct.src);
             distinct.setAttribute('src', "languages/distinct.html#" + language);
+            distinct.contentWindow.plotCharts();
 //            distinct.src = "languages/distinct.html#" + language;
 //            window.parent.window.location="#thirdPage";
             location.hash = "#thirdPage";
