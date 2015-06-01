@@ -1,97 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Programming Language Popularity</title>
     <meta charset="utf-8">
-
-    <link href='src/fonts.css' rel='stylesheet' type='text/css'>
-
-    <script src="src/jquery.min.js"></script>
-
-    <script>
-        function thirdPage(language) {
-
-            parent.thirdPage(language);
-        }
-    </script>
-
-    <script src="src/d3.min.js"></script>
-    <script src="src/d3-transform.js"></script>
-    <script src="src/extarray.js"></script>
-    <script src="src/misc.js"></script>
-    <script src="src/micro-observer.js"></script>
-    <script src="src/microplugin.js"></script>
-    <script src="src/bubble-chart.js"></script>
-    <script src="src/plugins/central-click/central-click.js"></script>
-    <script src="src/plugins/lines/lines.js"></script>
-    <script src="index.js"></script>
+    <title>Programming Language Popluarity</title>
+    <link rel="stylesheet" href="fullpage/css/jquery.fullPage.css">
     <style>
-        @media (min-width: 800px) {
-            .bubbleChart {
-                min-width: 100px;
-                max-width: 700px;
-                height: 500px;
-                margin: 0 auto;
-            }
+        canvas {
+            left: 0;
+        }
+        a:visited {
+            color: greenyellow;
+        }
+        a {
+            color: coral;
         }
 
-        @media (min-width: 1024px) {
-            .bubbleChart {
-                min-width: 100px;
-                max-width: 900px;
-                height: 650px;
-                margin: 0 auto;
-            }
+        * {
+            font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        }
+    </style>
+    <style>
+        .section {
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
         }
 
-        @media (min-width: 1400px) {
-            .bubbleChart {
-                min-width: 100px;
-                max-width: 1300px;
-                height: 800px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (min-width: 1920px) {
-            .bubbleChart {
-                min-width: 100px;
-                max-width: 1800px;
-                height: 950px;
-                margin: 0 auto;
-            }
-        }
-
-        .bubbleChart svg {
-            background: rgba(0, 0, 0, 0);
+        iframe {
+            width: 100%;
+            height: 100%;
         }
 
         canvas {
-            margin: 0 auto;
-            z-index: -1;
-            position: fixed;
-        }
-
-        body {
-            display: block;
-            margin: 0;
+            position: absolute;
         }
 
         * {
             font-family: "Source Sans Pro" !important;
         }
     </style>
+    <script src="fullpage/js/jquery-1.8.3.min.js"></script>
+    <script src="fullpage/js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function () {
+            $('#container').fullpage({
+                sectionsColor: ['#000', '#000', '#000', '#000'],
+                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage']
+            });
+        });
+    </script>
+    <script>
+
+        function thirdPage(language) {
+            var distinct = document.getElementById('distinct').childNodes[0].childNodes[1];
+            console.log(distinct.src);
+            distinct.setAttribute('src', "languages/distinct.html#" + language);
+            distinct.contentWindow.plotCharts();
+//            distinct.src = "languages/distinct.html#" + language;
+//            window.parent.window.location="#thirdPage";
+            location.hash = "#thirdPage";
+            console.log(window.href);
+
+            console.log(language);
+
+        }
+    </script>
+
 </head>
+
 <body>
-<script src="src/trianglify.min.js"></script>
-<script>
-    var pattern = Trianglify({
-        width: window.innerWidth,
-        height: window.innerHeight,
-        x_colors : 'PRGn'
-    });
-    document.body.appendChild(pattern.canvas())
-</script>
-<div class="bubbleChart"></div>
+
+<div id="container">
+    <div class="section" id="first">
+        <script src="languages/trianglify.min.js"></script>
+        <script>
+            var pattern = Trianglify({
+                width: window.innerWidth,
+                height: window.innerHeight,
+                x_colors: 'Purples'
+            });
+            document.getElementById('first').appendChild(pattern.canvas())
+        </script>
+        <div class="slide">
+            <h1>Popularity of<br>Programming Languages</h1>
+            <p>By 刘汉元 陈雨露 王容基</p>
+        </div>
+        <div class="slide">
+            <h1>Data Source</h1>
+            <h1><a href="www.tiobe.com">www.tiobe.com</a></h1>
+        </div>
+        <div class="slide">
+            <h1>Techniques</h1>
+            <p><a href="http://d3js.org/">d3.js</a></p>
+            <p><a href="http://alvarotrigo.com/fullPage/">fullpage.js</a></p>
+            <p><a href="https://github.com/phuonghuynh/bubble-chart">bubble-chart</a></p>
+            <p><a href="http://qrohlf.com/trianglify/">trianglify</a></p>
+        </div>
+    </div>
+    <div class="section">
+
+        <iframe src="first.html" scrolling="no" frameborder="0" seamless=""></iframe>
+    </div>
+    <div class="section" id="distinct">
+
+        <iframe src="languages/distinct.html" scrolling="no" frameborder="0"></iframe>
+    </div>
+</div>
+
 </body>
 </html>
