@@ -5,9 +5,24 @@
     <title>Programming Language Popluarity</title>
     <link rel="stylesheet" href="fullpage/css/jquery.fullPage.css">
     <style>
+        canvas {
+            left: 0;
+        }
+        a:visited {
+            color: greenyellow;
+        }
+        a {
+            color: coral;
+        }
+
+        * {
+            font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        }
+    </style>
+    <style>
         .section {
             text-align: center;
-            font: 50px "Microsoft Yahei";
+            font-size: 50px;
             color: #fff;
         }
 
@@ -18,6 +33,10 @@
 
         canvas {
             position: absolute;
+        }
+
+        * {
+            font-family: "Source Sans Pro" !important;
         }
     </style>
     <script src="fullpage/js/jquery-1.8.3.min.js"></script>
@@ -52,15 +71,30 @@
 <body>
 
 <div id="container">
-    <div class="section">
+    <div class="section" id="first">
+        <script src="languages/trianglify.min.js"></script>
+        <script>
+            var pattern = Trianglify({
+                width: window.innerWidth,
+                height: window.innerHeight,
+                x_colors: 'Purples'
+            });
+            document.getElementById('first').appendChild(pattern.canvas())
+        </script>
         <div class="slide">
-            <h3>Brief Introduction</h3>
+            <h1>Popularity of<br>Programming Languages</h1>
+            <p>By 刘汉元 陈雨露 王容基</p>
         </div>
         <div class="slide">
-            <h3>第二屏的第二屏</h3>
+            <h1>Data Source</h1>
+            <h1><a href="www.tiobe.com">www.tiobe.com</a></h1>
         </div>
         <div class="slide">
-            <h3>第二屏的第三屏</h3>
+            <h1>Techniques</h1>
+            <p><a href="http://d3js.org/">d3.js</a></p>
+            <p><a href="http://alvarotrigo.com/fullPage/">fullpage.js</a></p>
+            <p><a href="https://github.com/phuonghuynh/bubble-chart">bubble-chart</a></p>
+            <p><a href="http://qrohlf.com/trianglify/">trianglify</a></p>
         </div>
     </div>
     <div class="section">
@@ -70,11 +104,6 @@
     <div class="section" id="distinct">
 
         <iframe src="languages/distinct.html" scrolling="no" frameborder="0"></iframe>
-    </div>
-    <div class="section">
-        <h3>第四屏</h3>
-
-        <p>这是最后一屏</p>
     </div>
 </div>
 

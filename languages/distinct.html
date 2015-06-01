@@ -5,6 +5,19 @@
     <title>Ruby</title>
     <script src="jquery.min.js"></script>
     <script src="highcharts.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #title {
+            text-align: center;
+        }
+
+        * {
+            font-family: "Source Sans Pro" !important;
+        }
+    </style>
 </head>
 <body>
 <div id="wrapper" style="position:absolute;margin-top:5%;margin-left:auto;margin-right:auto;width:100%;z-index:1">
@@ -15514,7 +15527,8 @@
     <script>
         var pattern = Trianglify({
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            x_colors : 'Spectral'
         });
         document.body.appendChild(pattern.canvas())
     </script>
